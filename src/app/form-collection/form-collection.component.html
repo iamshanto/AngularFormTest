@@ -1,0 +1,45 @@
+<h1>Form Collection Example</h1>
+
+<form [formGroup]="customerForm" (ngSubmit)="submitForm()">
+  <div class="row">
+    <div class="form-group">
+      <label for="name">Customer Name</label>
+      <input class="form-control" type="text" id="name" formControlName="name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input class="form-control" type="text" id="email" formControlName="email">
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input class="form-control" type="text" id="phone" formControlName="phone">
+    </div>
+
+    <div class="form-group" formArrayName="addresses">
+      <label for="phone">address</label>
+      <div class="row" *ngFor="let address of customerForm.get('addresses').controls; let i = index">
+        <div formGroupName="{{i}}">
+          <div class="col-md-2">
+          <input class="form-control" type="text" formControlName="housreNo">
+          </div>
+          <div class="col-md-2">
+            <input class="form-control col-md-1" type="text" formControlName="roadNo">
+          </div>
+          <div class="col-md-4">
+            <input class="form-control col-md-2" type="text" formControlName="area">
+          </div>
+          <div class="col-md-1">
+            <button class="btn btn-danger" (click)="removeAddress(i)">X</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <input type="submit" class="btn btn-primary" [disabled]="!customerForm.valid">
+    <input type="button" class="btn btn-warning" (click)="addAddress()" value="Add Address">
+  </div>
+</form>

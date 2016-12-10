@@ -1,0 +1,17 @@
+<h1>Data Driven Form</h1>
+
+<form [formGroup]="myForm" (ngSubmit)="onFormSubmit()" novalidate>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input id="username" type="text" class="form-control" formControlName="username">
+  </div>
+  <div class="form-group">
+    Email : <input type="email" class="form-control" formControlName="email">
+  </div>
+  <div class="form-group">
+    Password : <input type="password" class="form-control" formControlName="password">
+  </div>
+
+  <input type="submit" value="Save" class="btn btn-primary">
+  <button type="button" (click)="onReset()" class="btn btn-danger">Reset</button>
+</form>

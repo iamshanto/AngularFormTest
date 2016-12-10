@@ -1,0 +1,17 @@
+<h1>Template Driven Form</h1>
+
+<form (ngSubmit)="onFormSubmit(f)" #f="ngForm" novalidate>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="username" class="form-control" [ngModel]="user.username" required>
+  </div>
+  <div class="form-group">
+    Email : <input type="email" name="email" class="form-control" [ngModel]="user.email" required>
+  </div>
+  <div class="form-group">
+    Password : <input type="password" name="password" class="form-control" [ngModel]="user.password" required>
+  </div>
+
+  <input type="submit" value="Save" class="btn btn-primary">
+  <button type="button" (click)="onReset(f)" class="btn btn-danger">Reset</button>
+</form>
